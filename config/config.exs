@@ -21,6 +21,16 @@ config :aurora, AuroraWeb.Endpoint,
   pubsub_server: Aurora.PubSub,
   live_view: [signing_salt: "tWm20+rt"]
 
+# Configures mongodb
+config :aurora, Aurora.Repo,
+  adapter: Mongo.Ecto,
+  database: "aurora",
+  hostname: "localhost",
+  port: 27017,
+  username: "user",
+  password: "pass",
+  pool_size: 10
+
 # Configures the mailer
 #
 # By default it uses the "Local" adapter which stores the emails

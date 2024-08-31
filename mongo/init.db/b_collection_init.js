@@ -33,4 +33,5 @@ db.createCollection("users", {
     },
   },
 });
+
 db.users.createIndex({ document_id: 1 }, { unique: true });

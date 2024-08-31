@@ -8,6 +8,7 @@ defmodule Aurora.Application do
   @impl true
   def start(_type, _args) do
     children = [
+      Aurora.Repo,
       AuroraWeb.Telemetry,
       {DNSCluster, query: Application.get_env(:aurora, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: Aurora.PubSub},

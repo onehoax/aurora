@@ -2,15 +2,17 @@
 ===============================================================
 =================== User / DB Creation ========================
 ===============================================================
+
+NOTE: `process.env` only works in later versions of mongodb (> 6).
 */
 
 db.createUser({
-  user: process.env.MONGO_INITDB_ROOT_USERNAME,
-  pwd: process.env.MONGO_INITDB_ROOT_PASSWORD,
+  user: process.env.USERNAME,
+  pwd: process.env.PWD,
   roles: [
     {
       role: "readWrite",
-      db: process.env.MONGO_INITDB_DATABASE,
+      db: process.env.DB_NAME,
     },
   ],
 });
