@@ -12,5 +12,7 @@ services:
     ports:
       - ${DB_LOCAL_PORT}:27017
     volumes:
+      - ./mongod.conf:/etc/mongod.conf
       - ./init.db:/docker-entrypoint-initdb.d
       - ./data:/data/db
+    command: ["mongod", "-f", "/etc/mongod.conf"]
