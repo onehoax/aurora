@@ -100,3 +100,21 @@ if config_env() == :prod do
   #
   # See https://hexdocs.pm/swoosh/Swoosh.html#module-installation for details.
 end
+
+if config_env() == :dev do
+  # Configure mongodb
+  db_name = System.get_env("MONGO_DB")
+  db_host = System.get_env("MONGO_HOST")
+  db_port = String.to_integer(System.get_env("MONGO_PORT")) || 27017
+  db_username = System.get_env("MONGO_USERNAME")
+  db_pwd = System.get_env("MONGO_PWD")
+
+  config :aurora, Aurora.Repo,
+    adapter: Mongo.Ecto,
+    database: db_name,
+    hostname: db_host,
+    port: db_port,
+    username: db_username,
+    password: db_pwd,
+    pool_size: 10
+end
